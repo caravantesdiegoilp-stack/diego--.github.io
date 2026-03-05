@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cifrado César - Encripta tus mensajes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔐 Cifrado César</h1>
+            <p class="subtitle">Encripta y desencripta mensajes fácilmente</p>
+        </header>
+
+        <main>
+            <div class="form-group">
+                <label for="mensaje">Mensaje:</label>
+                <textarea 
+                    id="mensaje" 
+                    placeholder="Escribe tu mensaje aquí..."
+                    rows="5"
+                ></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="desplazamiento">Desplazamiento (0-25):</label>
+                <input 
+                    type="number" 
+                    id="desplazamiento" 
+                    min="0" 
+                    max="25" 
+                    value="3"
+                    class="input-number"
+                >
+            </div>
+
+            <div class="buttons">
+                <button class="btn btn-primary" onclick="cifrar()">
+                    🔒 Cifrar
+                </button>
+                <button class="btn btn-secondary" onclick="descifrar()">
+                    🔓 Descifrar
+                </button>
+                <button class="btn btn-danger" onclick="limpiar()">
+                    🗑️ Limpiar
+                </button>
+            </div>
+
+            <div class="form-group">
+                <label for="resultado">Resultado:</label>
+                <textarea 
+                    id="resultado" 
+                    placeholder="El resultado aparecerá aquí..."
+                    rows="5"
+                    readonly
+                ></textarea>
+            </div>
+
+            <div class="copy-button">
+                <button class="btn btn-copy" onclick="copiarResultado()">
+                    📋 Copiar Resultado
+                </button>
+            </div>
+
+            <div class="info-section">
+                <h3>ℹ️ ¿Cómo funciona?</h3>
+                <ul>
+                    <li>Escribe tu mensaje en el área de texto superior</li>
+                    <li>Elige un número de desplazamiento (1-25)</li>
+                    <li>Haz clic en "Cifrar" para encriptar o "Descifrar" para desencriptar</li>
+                    <li>El resultado aparecerá en el área inferior</li>
+                </ul>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Mi Cifrado César | Creado por caravantesdiegoilp-stack</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
