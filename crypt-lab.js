@@ -338,7 +338,7 @@ function render() {
         result = '// ERROR AL PROCESAR: ' + e.message;
     }
     outputEl.textContent = result;
-    modeTagEl.textContent = '[' + mode.label + ']';
+    modeTagEl.textContent = '● ' + mode.label;
     statEntropy.textContent = shannonEntropy(result).toFixed(2);
 }
 
@@ -389,7 +389,7 @@ document.getElementById('btn-scan-all').addEventListener('click', () => {
         report += `========================================\n [ ${mode.label} ]\n========================================\n${result}\n\n`;
     }
     outputEl.textContent = report;
-    modeTagEl.textContent = '[ANÁLISIS COMPLETO]';
+    modeTagEl.textContent = '● ANÁLISIS COMPLETO';
     statEntropy.textContent = shannonEntropy(report).toFixed(2);
 });
 
