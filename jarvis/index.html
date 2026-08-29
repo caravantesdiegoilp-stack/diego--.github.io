@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J.A.R.V.I.S. - Asistente básico</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🤖 J.A.R.V.I.S.</h1>
+            <p class="subtitle">Modelo básico · versión 0.1</p>
+        </header>
+
+        <main>
+            <div class="chat-window" id="chat-window">
+                <div class="msg jarvis">
+                    <span class="bubble">Hola, soy Jarvis. Todavía soy un modelo muy básico, pero iremos mejorando juntos. ¿Cómo te llamas?</span>
+                </div>
+            </div>
+
+            <form id="chat-form" class="chat-form" autocomplete="off">
+                <input
+                    type="text"
+                    id="chat-input"
+                    placeholder="Escribe un mensaje..."
+                    autocomplete="off"
+                >
+                <button type="submit" class="btn btn-primary">Enviar</button>
+                <button type="button" id="mic-btn" class="btn btn-secondary" title="Hablar">🎤</button>
+            </form>
+
+            <div class="options">
+                <label>
+                    <input type="checkbox" id="voice-toggle">
+                    Jarvis responde en voz alta
+                </label>
+                <button type="button" id="reset-btn" class="btn btn-danger">Reiniciar conversación</button>
+            </div>
+
+            <div class="info-section">
+                <h3>ℹ️ ¿Qué sabe hacer por ahora?</h3>
+                <ul>
+                    <li>Saludar y recordar tu nombre</li>
+                    <li>Decir la hora y la fecha actual</li>
+                    <li>Resolver operaciones matemáticas simples (ej: "cuanto es 12*3")</li>
+                    <li>Contar un chiste</li>
+                    <li>Responder por voz si activas la opción</li>
+                    <li>Escribe "ayuda" en cualquier momento para ver esta lista</li>
+                </ul>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Proyecto Jarvis | Creado por caravantesdiegoilp-stack</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
