@@ -169,6 +169,16 @@ footer {
     font-size: 0.9em;
 }
 
+footer a {
+    color: #667eea;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
 /* Responsive */
 @media (max-width: 600px) {
     header h1 {

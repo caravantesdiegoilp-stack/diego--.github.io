@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRYPTLAB // Terminal de Encriptación Multi-Lenguaje</title>
+<meta name="description" content="Encripta cualquier frase en binario, hex, base64, lenguajes de programación, enoquiano y hebreo. Estilo hacker.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="crypt-lab.css">
+</head>
+<body>
+
+<canvas id="matrix-rain"></canvas>
+<div class="scanlines"></div>
+<div class="vignette"></div>
+
+<div id="boot-screen">
+    <pre id="boot-text"></pre>
+    <div class="boot-skip">[ PULSA CUALQUIER TECLA PARA OMITIR ]</div>
+</div>
+
+<div id="app" class="hidden">
+
+    <a href="index (1).html" class="back-link">&lt; volver</a>
+
+    <header class="hero">
+        <svg class="emblem" viewBox="0 0 100 100" aria-hidden="true">
+            <g class="emblem-spin">
+                <circle cx="50" cy="50" r="38" class="emblem-ring" />
+                <polygon points="50,14 84,76 16,76" class="emblem-tri" />
+            </g>
+            <circle cx="50" cy="50" r="4" class="emblem-dot" />
+        </svg>
+
+        <h1 class="brand-title" data-text="CRYPTLAB">CRYPTLAB</h1>
+        <p class="hero-sub">[ SISTEMA DE CIFRADO AVANZADO &middot; MULTI-LENGUAJE ]</p>
+        <p class="hero-status">CRYPT_LAB &middot; PROTOCOLO <span class="on">ACTIVO</span></p>
+
+        <div class="hero-ticker" aria-hidden="true">
+            <div class="ticker-track">
+                <span>BINARIO</span><span>HEXADECIMAL</span><span>BASE64</span><span>MORSE</span>
+                <span>PYTHON</span><span>JAVASCRIPT</span><span>BRAINFUCK</span><span>ENSAMBLADOR</span>
+                <span>ENOQUIANO</span><span>HEBREO</span>
+                <span>BINARIO</span><span>HEXADECIMAL</span><span>BASE64</span><span>MORSE</span>
+                <span>PYTHON</span><span>JAVASCRIPT</span><span>BRAINFUCK</span><span>ENSAMBLADOR</span>
+                <span>ENOQUIANO</span><span>HEBREO</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="io-grid">
+            <div class="panel io-panel">
+                <div class="panel-head">
+                    <span>&#9656; INPUT.STREAM</span>
+                    <span class="pill pill-green">&#9679; READY</span>
+                </div>
+                <textarea id="input-text" rows="7" placeholder="// introduce tu mensaje aquí...&#10;// el sistema aguarda..."></textarea>
+            </div>
+
+            <div class="panel io-panel">
+                <div class="panel-head">
+                    <span>&#9656; OUTPUT.CIPHER</span>
+                    <span class="pill pill-cyan" id="output-mode-tag">&#9679; BINARIO</span>
+                </div>
+                <pre id="output-text">// el resultado del cifrado aparecerá aquí_</pre>
+            </div>
+        </section>
+
+        <section class="panel params-panel">
+            <div class="panel-head"><span>&#9670; PARÁMETROS DE CIFRADO</span></div>
+
+            <div class="mode-group">
+                <h3>// codificaciones</h3>
+                <div class="mode-grid">
+                    <button class="mode-btn active" data-mode="binary">Binario</button>
+                    <button class="mode-btn" data-mode="hex">Hexadecimal</button>
+                    <button class="mode-btn" data-mode="octal">Octal</button>
+                    <button class="mode-btn" data-mode="base64">Base64</button>
+                    <button class="mode-btn" data-mode="ascii">ASCII</button>
+                    <button class="mode-btn" data-mode="morse">Morse</button>
+                    <button class="mode-btn" data-mode="rot13">ROT13</button>
+                    <button class="mode-btn" data-mode="urlenc">URL</button>
+                    <button class="mode-btn" data-mode="unicode">Unicode \u</button>
+                </div>
+            </div>
+
+            <div class="mode-group">
+                <h3>// lenguajes de programación</h3>
+                <div class="mode-grid">
+                    <button class="mode-btn" data-mode="python">Python</button>
+                    <button class="mode-btn" data-mode="javascript">JavaScript</button>
+                    <button class="mode-btn" data-mode="c">C</button>
+                    <button class="mode-btn" data-mode="java">Java</button>
+                    <button class="mode-btn" data-mode="go">Go</button>
+                    <button class="mode-btn" data-mode="rust">Rust</button>
+                    <button class="mode-btn" data-mode="bash">Bash</button>
+                    <button class="mode-btn" data-mode="sql">SQL</button>
+                    <button class="mode-btn" data-mode="asm">Ensamblador</button>
+                    <button class="mode-btn" data-mode="brainfuck">Brainfuck</button>
+                </div>
+            </div>
+
+            <div class="mode-group">
+                <h3>// cifrados esotéricos</h3>
+                <div class="mode-grid">
+                    <button class="mode-btn" data-mode="enochian">Enoquiano</button>
+                    <button class="mode-btn" data-mode="hebrew">Hebreo</button>
+                </div>
+            </div>
+
+            <div class="stats-row">
+                <div class="stat-box">
+                    <span class="stat-label">Caracteres</span>
+                    <span class="stat-value" id="stat-chars">0</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Bytes (UTF-8)</span>
+                    <span class="stat-value" id="stat-bytes">0</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Entropía (bits/char)</span>
+                    <span class="stat-value" id="stat-entropy">0.00</span>
+                </div>
+            </div>
+
+            <div class="action-row">
+                <button id="btn-clear" class="btn-ghost">LIMPIAR</button>
+                <button id="btn-copy" class="btn-ghost">COPIAR</button>
+                <button id="btn-scan-all" class="btn-primary">&#128274; ANALIZAR_TODO</button>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bottombar">
+        <span>CRYPT_LAB v2.0</span>
+        <span>&copy; 2026 caravantesdiegoilp-stack</span>
+        <span class="status-dot">&#9679; ONLINE</span>
+    </footer>
+
+</div>
+
+<div id="toast"></div>
+
+<script src="crypt-lab.js"></script>
+</body>
+</html>
